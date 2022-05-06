@@ -1,24 +1,19 @@
-puts 'Pick a card'
+# Подключаем класс колоды
+require_relative 'lib/deck'
 
-values = %w[2 3 4 5 6 7 8 9 10 J Q K A]
-suits = %w[Diamonds Hearts Clubs Spades] # Буби, Черви, Крести, Пики
+# Выводим приветствие
+puts 'Pick a Card'
+puts
 
-cards = []
+# Создаем новую колоду и сразу её перемешиваем
+deck = Deck.new.shuffle
 
-values.each do |value|
-  suits.each do |suit|
-    cards << "#{value}#{suit[0].downcase}"
-  end
-end
-
-2.times do
-	cards << '[Joker]'
-end
-cards.shuffle!
-
+# Спрашиваем у пользователя, сколько ему надо карт
 puts 'How many cards do you pick?'
 number = $stdin.gets.to_i
 
+# Нужное число раз выкидываем из колоды последнюю карту
+puts
 number.times do
-  puts cards.pop
+  puts deck.pop_a_card
 end
